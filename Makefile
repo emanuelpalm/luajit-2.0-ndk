@@ -2,6 +2,8 @@ ENV_CONF = conf/env.conf
 
 default: generate
 
+-include make/_all.mk
+
 setup: ${ENV_CONF}
 
 ${ENV_CONF}:

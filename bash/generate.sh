@@ -21,6 +21,7 @@ else
 fi
 
 LUA_PATH="$PROJECT_ROOT/luajit-2.0"
+MAKEFILE_ALL="$PROJECT_MAKE/_all.mk"
 
 # Generates Makefile for NDK platform at given platform sysroot path $1.
 generate() {
@@ -93,9 +94,15 @@ generate() {
 
         echo -e '.PHONY: default install-local clean' >> "$makefile"
 
+        echo -e "ndk-$name:" >> "$MAKEFILE_ALL"
+        echo -e "\t\${MAKE} -f $makefile" >> "$MAKEFILE_ALL"
+        echo -e '' >> "$MAKEFILE_ALL"
+
         echo >&2 " done."
     fi
 }
+
+echo -n '' > "$MAKEFILE_ALL"
 
 ARCHS=${NDK_TARGET_ARCHS//:/ }
 for arch in $ARCHS;
