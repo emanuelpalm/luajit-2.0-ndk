@@ -82,6 +82,11 @@ MISSING=0
     NDK_TARGET_ARCHS="${NDK_TARGET_ARCHS%?}"
 }
 
+# Set makefile generation output folder.
+[[ -z "$PROJECT_MAKE" ]] && {
+    PROJECT_MAKE="$PROJECT_ROOT/make"
+}
+
 # Set build output folder.
 [[ -z "$PROJECT_OUT" ]] && {
     PROJECT_OUT="$PROJECT_ROOT/out"
@@ -99,6 +104,7 @@ then
     echo "NDK_PATH=$NDK_PATH" >> "$PROJECT_CONF_ENV"
     echo "NDK_PLATFORM=$NDK_PLATFORM" >> "$PROJECT_CONF_ENV"
     echo "NDK_TARGET_ARCHS=$NDK_TARGET_ARCHS" >> "$PROJECT_CONF_ENV"
+    echo "PROJECT_MAKE=$PROJECT_MAKE" >> "$PROJECT_CONF_ENV"
     echo "PROJECT_OUT=$PROJECT_OUT" >> "$PROJECT_CONF_ENV"
     echo "PROJECT_ROOT=$PROJECT_ROOT" >> "$PROJECT_CONF_ENV"
     echo "UNAME=$UNAME" >> "$PROJECT_CONF_ENV"
