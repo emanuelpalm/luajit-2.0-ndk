@@ -62,8 +62,10 @@ generate() {
         local out="$PROJECT_OUT/ndk-$name"
         local uname=`uname`
 
+        # Make sure makefile directory exsits.
         mkdir -p "$(dirname "$makefile")"
 
+        # Generate makefile.
         echo -e 'MKDIR = mkdir -p' > "$makefile"
 
         echo -e '' >> "$makefile"
@@ -94,6 +96,7 @@ generate() {
 
         echo -e '.PHONY: default install-local clean' >> "$makefile"
 
+        # Add entry to _all.mk
         echo -e "ndk-$name:" >> "$MAKEFILE_ALL"
         echo -e "\t\${MAKE} -f $makefile" >> "$MAKEFILE_ALL"
         echo -e '' >> "$MAKEFILE_ALL"
