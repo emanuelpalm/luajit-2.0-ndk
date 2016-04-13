@@ -47,6 +47,12 @@ explicitly by defining `$NDK_PATH`.
 $ NDK_PATH=/path/to/ndk-bundle make
 ```
 
+### Listing Available Build Targets
+
+When all makefiles have been generated, you can see all available build targets by listing the
+contents of the `make` directory. Each build target has its default build rule invokable via the
+root `Makefile` as a rule named `ndk-<platform>`.
+
 ## Supported Platforms
 
 The scripts have been verified to run on Ubuntu 14.04 and OS X 10.10, and should work on any UNIX
