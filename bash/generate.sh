@@ -61,6 +61,8 @@ generate() {
         local out="$PROJECT_OUT/ndk-$name"
         local uname=`uname`
 
+        mkdir -p "$(dirname "$makefile")"
+
         echo -e 'MKDIR = mkdir -p' > "$makefile"
 
         echo -e '' >> "$makefile"
