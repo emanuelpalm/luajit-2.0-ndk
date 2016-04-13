@@ -64,6 +64,9 @@ It may be the case that the NDK supports more targets than LuaJIT can generate a
 example, LuaJIT 2.0.4 lacks support for the 64-bit MIPS architecture, while being a valid Android
 NDK target platform.
 
+LuaJIT 2.0.4 requires the use of GCC to build for the NDK. This may be problematic in the future,
+as GCC has been deprecated in favor of CLANG as of NDK version 11.
+
 ## Contributing
 
 If anything wouldn't work, don't hesitate to try and fix it and make a pull request. If you don't
