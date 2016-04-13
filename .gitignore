@@ -1,2 +1,8 @@
+# Folders containing generated files.
 /conf/
+/make/
 /out/
+
+# Temporary files.
+*~
+*.swp
