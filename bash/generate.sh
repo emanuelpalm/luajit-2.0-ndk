@@ -61,12 +61,17 @@ generate() {
         local out="$PROJECT_OUT/ndk-$name"
         local uname=`uname`
 
-        echo -e 'default: install-local' > "$makefile"
+        echo -e 'MKDIR = mkdir -p' > "$makefile"
+
+        echo -e '' >> "$makefile"
+
+        echo -e 'default: install-local' >> "$makefile"
 
         echo -e '' >> "$makefile"
 
         echo -e 'install-local:' >> "$makefile"
-        echo -e "\t@cd $LUA_PATH && \\" >> "$makefile"
+        echo -e "\t\$@{MKDIR} $out && \\" >> "$makefile"
+        echo -e "\t\tcd $LUA_PATH && \\" >> "$makefile"
         echo -e "\t\t\${MAKE} clean && \\" >> "$makefile"
         echo -e "\t\t\${MAKE} CC=\"gcc\"\\" >> "$makefile"
         echo -e "\t\t\tHOST_CC=\"gcc -m$cpu\" \\" >> "$makefile"
