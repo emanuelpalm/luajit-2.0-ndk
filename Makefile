@@ -13,5 +13,6 @@ generate: ${ENV_CONF}
 clean:
 	$(foreach F,$(wildcard ${ENV_CONF}),${RM} $F)
 	$(foreach F,$(wildcard make/*.mk),${RM} $F;)
+	$(foreach D,$(wildcard out),${RM} -R $D)
 
 .PHONY: default setup generate clean
