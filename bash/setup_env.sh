@@ -12,13 +12,13 @@ findpath() {
         for i in "$(find $path -ipath $1 2>/dev/null)";
         do
             [[ "$i" == "" ]] && { break; }
-            echo >&2 " FOUND AT $i"
+            echo >&2 " found at $i."
             result="$i"
             break 2
         done
     done
     [[ "$result" == "" ]] && {
-        echo >&2 " NOT FOUND"
+        echo >&2 " not found!"
     }
     echo "$result"
 }
@@ -37,7 +37,7 @@ MISSING=0
         NDK_PATH=$(dirname "$NDK_PATH")
     else
         let "MISSING += 1"
-        echo >&2 "! Android NDK not found. Cannot set NDK_PATH."
+        echo >&2 '! Android NDK not found. Cannot set $NDK_PATH.'
     fi
 }
 
@@ -54,8 +54,8 @@ MISSING=0
     done
     [[ "$NDK_PLATFORM" == "" ]] && {
         let "MISSING += 1"
-        echo >&2 "! No NDK platform found. Cannot set NDK_PLATFORM."
-        echo >&2 "! No NDK platform found. Cannot set NDK_ABI."
+        echo >&2 '! No NDK platform found. Cannot set $NDK_PLATFORM.'
+        echo >&2 '! No NDK platform found. Cannot set $NDK_ABI.'
     }
 }
 
@@ -69,14 +69,14 @@ MISSING=0
         echo >&2 -n " ${name:5}"
         NDK_TARGET_ARCHS="$i:$NDK_TARGET_ARCHS"
     done
-    echo >&2
+    echo >&2 '.'
 
     unset name
     unset platforms
 
     [[ "$NDK_TARGET_ARCHS" == "" ]] && {
         let "MISSING += 1"
-        echo >&2 "! No NDK target archs found. Cannot set NDK_TARGET_ARCHS."
+        echo >&2 '! No NDK target archs found. Cannot set $NDK_TARGET_ARCHS.'
     }
 
     NDK_TARGET_ARCHS="${NDK_TARGET_ARCHS%?}"

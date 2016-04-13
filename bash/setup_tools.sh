@@ -7,10 +7,10 @@ exists() {
     type $1 >/dev/null 2>&1
     if [ "$?" == "0" ];
     then
-        echo >&2 " in PATH"
+        echo >&2 ' in $PATH.'
         echo "0"
     else
-        echo >&2 " not in PATH"
+        echo >&2 ' not in $PATH!'
         echo "1"
     fi
 }
@@ -27,8 +27,8 @@ let "MISSING += $(exists rm)"
 if [ "$MISSING" != "0" ];
 then
     echo >&2
-    echo >&2 "[!] Please install the unavailable tools and try again. If"
-    echo >&2 "    installed already, make sure they are present in PATH."
+    echo >&2 '[!] Please install the unavailable tools and try again. If'
+    echo >&2 '    installed already, make sure they are present in your $PATH.'
     echo >&2
     exit 1
 fi
